@@ -1,47 +1,220 @@
+<!--******************************************************************\\
+||                [BEGINNER JAVA-SCRIPT BANK PROJECT]                 ||
+||********************************************************************||
+||                                                                    ||
+|| #USED: HTML,TAILWIND CSS,JAVA-SCRIPT                               ||
+|| #BY: SALMAN SHAHRIAR                                               ||
+||      (LINKEDIN: www.linkedin.com/in/salman-shahriar)               ||
+||      (GITHUB: www.github.io/salmanshahriar)                        ||
+||                                                                    ||
+||********************************************************************//
+\\*******************************************************************-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!------------- 
+|   #Tittle   |
+--------------->
     <title>JS Bank Project</title>
-    <!-- tailwindcss -->
+
+<!----------------------------
+|   #Tailwind Css cdn link   |
+----------------------------->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-800">
+<body class="bg-slate-800 font-mono">
 
-   <main class="">
-    <h1 class="text-center mx-auto text-4xl py-3 pb-5 mb-36 font-semibold text-amber-300 bg-slate-700 rounded-sm"><span class="font-bold">JS Bank Project</span></h1>
-    <section>
-        <div class="grid grid-cols-3 gap-4 w-9/12 mx-auto rounded-xl ">
-            <div class="bg-green-400 p-8 rounded-xl">
-                <h4 class="text-2xl">Deposit</h4>
-                <h2  class="text-5xl">$<span id="deposit-total">00</span></h2>
-            </div>
-            <div class="bg-yellow-400 p-8 rounded-xl">
-                <h4 class="text-2xl">withdraw</h4>
-                <h2 class="text-5xl">$<span id="withdraw-total">00</span></h2>
-            </div>
-            <div class="bg-violet-400 p-8 rounded-xl">
-                <h4 class="text-2xl">Balance</h4>
-                <h2 id="" class="text-5xl">$<span id="balance-total">1240</span></h2>
+<!-------------
+|  #Heading   |
+-------------->
+    <h1 class="text-center mx-auto text-4xl py-3 pb-5 mb-36 font-semibold text-amber-300 bg-slate-700 rounded-sm"><span class="font-bold"><u>Beginner JavaScript Bank Project</u></span></h1>
+
+<!---------------------
+|  #Display Section   |
+---------------------->
+    <div class="grid grid-cols-3 gap-4 w-9/12 mx-auto rounded-xl ">
+        <div class="bg-green-400 p-8 rounded-xl">
+            <h4 class="text-2xl">Deposit</h4>
+            <h2 class="text-5xl">$
+            <!-- #Deposit Total Display -->
+            <span id="deposit-total">00</span>
+            </h2>
         </div>
-    </section>
+        <div class="bg-yellow-400 p-8 rounded-xl">
+            <h4 class="text-2xl">Withdraw</h4>
+            <h2 class="text-5xl">$
+            <!-- #Withdraw Total Display -->
+            <span id="withdraw-total">00</span>
+            </h2>
+        </div>
+        <div class="bg-violet-400 p-8 rounded-xl">
+            <h4 class="text-2xl">Balance</h4>
+            <h2 class="text-5xl">$
+            <!-- #Balance Total Display -->
+            <span id="balance-total">1000</span>
+            </h2>
+        </div>
+    </div>
+
+<!------------------- 
+|  #Input Section   |
+-------------------->
     <div class="grid grid-cols-2 gap-4 w-9/12 mx-auto rounded-xl mt-24">
         <div class="bg-sky-300 p-8 rounded-xl">
             <h4 class="text-2xl mb-3">Enter deposit amount</h4>
-            <input id="deposit" class="block mb-3  w-8/12 rounded px-2" placeholder="$ amount you want to deposit" type="text">
-            <button id="btn-deposit" class="bg-amber-300 rounded px-3 py-1 hover:bg-amber-200 rounded-lg font-semibold">Deposit</button>
+
+            <!-- #Deposit Input -->
+            <input id="input-deposit" 
+            class="block mb-3  w-8/12 rounded px-2" placeholder="$ amount you want to deposit" type="text">
+
+            <!-- #Deposit Button -->
+            <button id="button-deposit" 
+            class="bg-amber-300 rounded px-3 py-1 hover:bg-amber-200 rounded-lg font-semibold border-solid">Deposit</button>
         </div>
         <div class="bg-red-300 p-8 rounded-xl">
             <h4 class="text-2xl mb-3">Enter withdraw amount</h4>
-            <input id="withdraw" class="block mb-3 w-8/12 rounded px-2" placeholder="$ amount you want to withdraw" type="text">
-            <button id="btn-withdraw" class="bg-amber-300 rounded px-3 py-1 hover:bg-amber-200 rounded-lg font-semibold">Withdraw</button>
 
-            
+            <!-- #Withdraw Input -->
+            <input id="input-withdraw" 
+            class="block mb-3 w-8/12 rounded px-2" placeholder="$ amount you want to withdraw" type="text">
+
+            <!-- #Withdraw Button -->
+            <button id="button-withdraw" 
+            class="bg-amber-300 rounded px-3 py-1 hover:bg-amber-200 rounded-lg font-semibold border-solid	">Withdraw
+            </button>
         </div>
+
     </div>
-   </main>
-    <script src="./bank.js"></script>
+
+<!----------------- 
+|  #JavaScript    |
+------------------>
+    <script>
+/*****************************[SECTIONS]*******************************|
+|                                                                      |
+| [1] Deposit and Balance section:                                     |
+|       Deposit = (take input, flitter the number and display result)  |
+|       Balance = (update from deposit and display result)             |
+|                                                                      |
+| [2] Withdraw and Balance section:                                    |
+|       Withdraw = (take input, flitter the number and display result) |
+|       Balance = (update from withdraw and display result)            |
+|                                                                      |
+**********************************************************************/
+
+        //*******************************************//               
+      //   [1]. Deposit and Balance section:       //
+    //*******************************************//
+
+        //Note: At first we will code for Deposit and Balance... That will be displayed on web... A user can Deposit amount and that that will be updated on Deposit section in web... And the Balance section also updated when a user Deposit some amount...
+
+        // First we need to call the Deposit 'Button'(html-tag) by-->(document.getElementById) with the value of id called-->('button-deposit').And add a event listener by-->(.addEventListener) to listen the 'click' of 'Button'... In the event listener we also add a function to begin the process of Deposit and update Balance...In that function we have to call the id ('input-deposit') to take the value of input by the click of Deposit button...
+        document.getElementById('button-deposit').addEventListener('click',function(){
+
+            const depositElement = document.getElementById('input-deposit');
+            const newDepositAmount = depositElement.value.trim(); 
+            // .trim() will remove text space from start and end.. 
+            // Example: ('  abcd abcd  ').trim() = ('abcd abcd')
+
+            const isValid = /^-?\d+(\.\d+)?$/.test(newDepositAmount); 
+            /* NOTE:
+            [const isValid = /^-?\d+(\.\d+)?$/.test(newDepositAmount);] is using for flitter the decimal number from (binary,octal,hexadecimal),(any alphabets Aa-Zz),(any sign) etc. If 'isValid' find any decimal number then--> (isValid = true;)
+
+                    isValid = 10;        //true (true on decimal integer number)
+                    isValid = 67.19;     //true (true on decimal float number)
+                    isValid = 111e1;     //false (false on binary,octal,hexadecimal etc)
+                    isValid = 12aBc34;   //false (false on any alphabets Aa-Zz)
+                    isValid = 16?^=.\-/$ //false (false on any sign)
+                    #ONLY TRUE ON 'decimal numbers'    */
+            depositElement.value = ''; 
+            
+            if (isValid) {
+                //when the isValid = true; then the decimal numbers enters in if-statement... ('newDepositAmount' was the decimal number)
+                const depositLimit = 100000;
+                if (newDepositAmount <= depositLimit) {
+                    const newDepositAmountNumber = Math.min(newDepositAmount);
+
+                    const depositTotalElement = document.getElementById('deposit-total');
+                    const previousDepositTotal = parseFloat(depositTotalElement.innerText);
+
+                    const currentDepositTotal = previousDepositTotal + newDepositAmountNumber;
+                    depositTotalElement.innerText = currentDepositTotal;    
+
+                    balanceTotalElement = document.getElementById('balance-total');
+                    const previousBalanceTotal = parseFloat(balanceTotalElement.innerText);
+
+                    const currentPreviousBalanceTotal = previousBalanceTotal + newDepositAmountNumber;
+                    balanceTotalElement.innerText = currentPreviousBalanceTotal;  
+                    } 
+                else{
+                    alert('Deposit limit 100k $')
+                    return;
+                }
+            }
+            else {
+                alert('Please provide a number')
+                return;
+            }
+            })
+
+        //*******************************************//               
+      //   [2]. Withdraw and Balance section:      //
+    //*******************************************//
+
+        //Note: Now we will code for Withdraw and update the Balance... That will be display on web... A user can Withdraw amount and that that will be update on Withdraw section in web... And the Balance section also updated when a user Withdraw the amount...
+
+        // First we need to call the Withdraw 'Button'(html-tag) by-->(document.getElementById) with the value of id called-->('button-deposit').And add a event listener by-->(.addEventListener) to listen the 'click' of 'Button'... In the event listener we also add a function to begin the process of Withdraw and update Balance...In that function we have to call the id ('input-withdraw') to take the value of input by the click of Withdraw button...
+        document.getElementById('button-withdraw').addEventListener('click',function(){
+        
+            const withdrawElement = document.getElementById('input-withdraw');
+            const newWithdrawAmount = withdrawElement.value.trim();
+            const isValid = /^-?\d+(\.\d+)?$/.test(newWithdrawAmount); //same thing that we have learned from deposit section;
+            withdrawElement.value = '';
+        
+            if (isValid) {
+                withdrawLimit = 100000;
+                if (newWithdrawAmount <= withdrawLimit) {
+                    const newWithdrawAmountNumber = Math.min(newWithdrawAmount);
+
+                    const withdrawTotalElement = document.getElementById('withdraw-total');
+                    const previousWithdrawTotal = parseFloat(withdrawTotalElement.innerText);
+
+                    const balanceTotalElement = document.getElementById('balance-total');
+                    const previousBalanceTotal = parseFloat(balanceTotalElement.innerText);
+
+                    if (previousBalanceTotal < newWithdrawAmount) {
+                        alert("Your account doesn't have sufficient money");
+                        return;
+                    }
+                    const currentWithdrawTotal = previousWithdrawTotal + newWithdrawAmountNumber;
+                    withdrawTotalElement.innerText = currentWithdrawTotal;
+
+                    const currentPreviousBalanceTotal = previousBalanceTotal - newWithdrawAmountNumber;
+                    balanceTotalElement.innerText = currentPreviousBalanceTotal;
+                }
+                else{
+                    alert('Withdraw limit 100k $')
+                    return;
+                }
+            }
+            else{
+                alert('Please provide a number')
+                return;
+                }
+            })
+    </script>
 </body>
-</html>
+</html> 
+
+<!-------------------------------------------
+|    Any Questions???                       |
+|       -ask gpt :)                         |
+|                                           |
+|    xD; you can Dm me on LinkedIn!         |
+|   (www.linkedin.com/in/salman-shahriar)   |
+-------------------------------------------->
+
